@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v15/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7aUXskPMBBSSJLm2E.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/firacode/v22/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJV37Nv7g.woff2) format('woff2');
+}
+
+@layer base {
+  :root {
+    --background: 260 40% 5%;
+    --foreground: 0 0% 88%;
+    
+    --card: 273 45% 15%;
+    --card-foreground: 0 0% 88%;
+    
+    --popover: 273 45% 15%;
+    --popover-foreground: 0 0% 88%;
+    
+    --primary: 260 60% 26%;
+    --primary-foreground: 0 0% 88%;
+    
+    --secondary: 260 80% 62%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 273 25% 30%;
+    --muted-foreground: 0 0% 70%;
+    
+    --accent: 273 25% 30%;
+    --accent-foreground: 0 0% 88%;
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 273 25% 30%;
+    --input: 273 25% 30%;
+    --ring: 260 80% 62%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(260 40% 5%) 0%, hsl(273 45% 15%) 100%);
+    min-height: 100vh;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(260 60% 26%) 0%, hsl(260 40% 5%) 100%);
+  }
+
+  .gradient-button {
+    @apply bg-gradient-to-br from-secondary to-primary hover:from-secondary/90 hover:to-primary/90 transition-all duration-300;
+  }
+
+  .font-space {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-code {
+    font-family: 'Fira Code', monospace;
+  }
+  
+  /* Article viewer styles */
+  .article-viewer-overlay {
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .article-viewer-content {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(260 60% 26%) transparent;
+    position: relative;
+    padding-top: 3.5rem !important; /* Extra padding to account for the close button */
+  }
+  
+  .article-viewer-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .article-viewer-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .article-viewer-content::-webkit-scrollbar-thumb {
+    background-color: hsl(260 60% 26%);
+    border-radius: 10px;
+  }
+  
+  .article-viewer-content::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(260 80% 62%);
+  }
+  
+  /* Close button */
+  .article-close-btn {
+    position: sticky !important;
+    top: 0.5rem;
+    right: 0.5rem;
+    float: right;
+    z-index: 60;
+    margin: -0.5rem -0.5rem 0 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+  }
+  
+  /* When article viewer is open on mobile */
+  body.viewer-open {
+    overflow: hidden;
+  }
+  
+  @media (max-width: 1023px) {
+    .article-viewer-mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      overflow-y: auto;
+    }
+  }
+}
